@@ -1,5 +1,6 @@
 const express = require("express");
 const app = new express();
+const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended : true}));
 const nav = [
@@ -57,4 +58,4 @@ app.post("/login",(req,res, next)=>{
 
 
 
-app.listen(5000);
+app.listen(port,()=>{ console.log("The Server is Ready at "+port)});
