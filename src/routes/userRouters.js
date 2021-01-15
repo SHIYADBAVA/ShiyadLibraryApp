@@ -1,5 +1,4 @@
 const express = require("express");
-const { render } = require("../../../../E-commerce App/app");
 const usersRouter = express.Router();
 usersRouter.use(express.json());
 usersRouter.use(express.urlencoded({ extended : true}));
