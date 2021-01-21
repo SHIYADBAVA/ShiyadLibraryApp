@@ -9,7 +9,6 @@
 		<link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 		<link href="/css/styles.css" rel="stylesheet">
 	</head>
 	<body>
@@ -50,7 +49,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1>Books
+        <h1>Book
           <p class="lead"></p>
         </h1>
       </div>
@@ -86,31 +85,23 @@
       <div class="panel">
         <div class="panel-body">
           
+          
+          
           <!--/stories-->
-          <%for(i=0;i<books.length;i++){%>
           <div class="row">    
             <br>
-            <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/image/<%=books[i].image%>" style="width:100px;height:100px" class="img-circle"></a>
-            </div>
-            <div class="col-md-10 col-sm-9">
-              <h3><%=books[i].title%></h3>
-              <div class="row">
-                <div class="col-xs-9">
-                  <h4><span class="label label-default"><%=books[i].author%></span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted"><%=books[i].genre%><a href="/books/<%=books[i]._id%>" class="text-muted"> • Read More</a></small>
-                  </h4></div>
+            <div class="col-md-12 col-sm-3 text-center">
+              <h1 class="text-success  text-center">Book Details Updated Successfully..</h1>
+                  
+                </div>
                 <div class="col-xs-3"></div>
               </div>
               <br><br>
             </div>
           </div>
-          <hr>
-          <%}%>
-          
+          <hr>          
           <!--/stories-->
-          
-          <a href="/admin/add-books" type="button" class="btn btn-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Book</a>
+
 
         
           
@@ -165,6 +156,6 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 	</body>
 </html>

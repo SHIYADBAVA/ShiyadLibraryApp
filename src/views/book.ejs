@@ -91,17 +91,17 @@
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/image/<%=book.img%>" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="#"><img alt="" src="/image/<%=book.image%>" style="width:100px;height:100px" class="img-circle"></a>
             </div>
             <div class="col-md-10 col-sm-9">
               <h3><%=book.title%></h3>
               <div class="row">
                 <div class="col-xs-9">
                   <h4><span class="label label-default"><%=book.author%></span></h4><h4>
-                    <h5>Originally Published : <%=book.published%></h5>
                   <small style="font-family:courier,'new courier';" class="text-muted"><%=book.genre%></small>
                 </h4>
-                <p><%=book.Description%></p>  
+                <br>
+                <p><%=book.description%></p>  
                   
                 </div>
                 <div class="col-xs-3"></div>
@@ -111,9 +111,12 @@
           </div>
           <hr>          
           <!--/stories-->
-          
-          
-          <a href="/add-books" type="button" class="btn btn-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Book</a>
+        <div class="text-center">
+          <a href="/admin/del/<%=book._id%>" type="button" class="btn btn-danger btnNext " onclick="return onclickfunction();"><i class="fa fa-trash"></i>  Delete</a>
+          <a href="/admin/edit-book/<%=book._id%>" type="button" class="btn btn-primary aligin-item-center btnNext"><i class="fa fa-pencil-square"></i>  Edit</a>
+          <a href="/admin/add-books" type="button" class="btn btn-success btnNextt"><i class="fa fa-plus-circle"></i>  Add Book</a>
+        </div>
+
         
           
         </div>
@@ -167,6 +170,24 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Delete Confirmation Alert Box -->
+    <script>
+    function onclickfunction(event, error)
+    {
+      if(!error)
+      {
+          alert("Are sure want to delete this Book?");
+          console.log("Success");
+          return true;
+      }
+      else
+      {
+          event.preventDefault();
+          console.log("Failed");
+          return false;
+      }
+    }
+    </script>
 	</body>
 </html>

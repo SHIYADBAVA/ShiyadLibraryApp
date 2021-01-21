@@ -7,10 +7,11 @@
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
-		<link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+
 	</head>
 	<body>
 <header class="navbar navbar-bright navbar-fixed-top" role="banner">
@@ -36,9 +37,6 @@
       </ul>
       <ul class="nav navbar-right navbar-nav">
         <li>
-          <a href="/admin/add-books" type="button" class="btn btn-outline-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Book</a>
-        </li>
-        <li>
           <a href="/">Logout</a>
         </li>
       </ul>
@@ -50,7 +48,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1>Books
+        <h1>Edit Author
           <p class="lead"></p>
         </h1>
       </div>
@@ -86,32 +84,46 @@
       <div class="panel">
         <div class="panel-body">
           
+          
+          
           <!--/stories-->
-          <%for(i=0;i<books.length;i++){%>
-          <div class="row">    
-            <br>
-            <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/image/<%=books[i].image%>" style="width:100px;height:100px" class="img-circle"></a>
-            </div>
-            <div class="col-md-10 col-sm-9">
-              <h3><%=books[i].title%></h3>
-              <div class="row">
-                <div class="col-xs-9">
-                  <h4><span class="label label-default"><%=books[i].author%></span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted"><%=books[i].genre%><a href="/books/<%=books[i]._id%>" class="text-muted"> • Read More</a></small>
-                  </h4></div>
-                <div class="col-xs-3"></div>
+          <form action="/admin/edit-author/<%=author._id%>" method="POST">
+            <div class="row1 row-space">
+                <div class="col-md-6">
+                    <div class="input-group text-center">
+                        <label class="label1">Name of Author</label>
+                        <input class="input1--style-7" type="text" name="author" value="<%=author.author%>" id="Author" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group text-center">
+                        <label class="label1">Books</label>
+                        <input class="input1--style-7" type="text" name="book" value="<%=author.book%>" id="titlebook" required>
+                    </div>
+                </div>
+            </div><br>
+            <div class="row1 row-space">
+              <div class="col-md-6">
+                  <div class="input-group text-center">
+                      <label class="label1">Details</label>
+                      <input class="input1--style-7" type="text" name="details" value="<%=author.details%>" id="details" required>
+                  </div>
               </div>
-              <br><br>
-            </div>
+              <div class="col-md-6">
+                  <div class="input-group text-center">
+                      <label class="label1">Image</label>
+                      <input class="input1--style-8" type="file" name="image" accept="image/*" id="image"  required>
+                  </div>
+
+              </div>
           </div>
-          <hr>
-          <%}%>
-          
+            <div class="col-md-12 p-t-15 text-center">
+                <button class="btn btn--radius-2 btn-success btn-lg" type="submit">Update</button>
+            </div>
+        </form>
           <!--/stories-->
           
-          <a href="/admin/add-books" type="button" class="btn btn-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Book</a>
-
+          
         
           
         </div>
@@ -165,6 +177,6 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 	</body>
 </html>

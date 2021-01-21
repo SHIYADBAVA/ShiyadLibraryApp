@@ -36,7 +36,7 @@
       </ul>
       <ul class="nav navbar-right navbar-nav">
         <li>
-          <a href="/add-authors" type="button" class="btn btn-outline-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Author</a>
+          <a href="/admin/add-authors" type="button" class="btn btn-outline-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Author</a>
         </li>
         <li>
           <a href="/">Logout</a>
@@ -92,7 +92,7 @@
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/image/<%=author.img%>" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="#"><img alt="" src="/image/<%=author.image%>" style="width:100px;height:100px" class="img-circle"></a>
             </div>
             <div class="col-md-10 col-sm-9">
               <h3><%=author.author%></h3>
@@ -110,8 +110,12 @@
           <!--/stories-->
           
           
-          <a href="/add-authors" type="button" class="btn btn-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Author</a>
-        
+          <!-- <a href="/add-authors" type="button" class="btn btn-success btnNext pull-right"><i class="fa fa-plus-circle"></i>  Add Author</a> -->
+          <div class="text-center">
+            <a href="/admin/delete/<%=author._id%>"  type="button" class="btn btn-danger btnNext " id="del" onclick="return onclickfunction();"><i class="fa fa-trash"></i>  Delete</a>
+            <a href="/admin/edit-author/<%=author._id%>"  type="button" class="btn btn-primary aligin-item-center btnNext"><i class="fa fa-pencil-square"></i>  Edit</a>
+            <a href="/admin/add-authors" type="button" class="btn btn-success btnNextt"><i class="fa fa-plus-circle"></i>  Add Author</a>
+          </div>
           
         </div>
       </div>
@@ -164,6 +168,24 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Delete Confirmation Alert Box -->
+    <script>
+    function onclickfunction(event, error)
+    {
+      if(!error)
+      {
+          alert("Are sure want to delete this Author details?");
+          console.log("Success");
+          return true;
+      }
+      else
+      {
+          event.preventDefault();
+          console.log("Failed");
+          return false;
+      }
+    }
+    </script>
 	</body>
 </html>

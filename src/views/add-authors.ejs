@@ -6,11 +6,11 @@
 		<title><%=title%></title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 
 	</head>
 	<body>
@@ -87,7 +87,7 @@
           
           
           <!--/stories-->
-          <form action="/add-authors" method="POST">
+          <form action="/admin/add-authors" method="POST" onsubmit="return onsubmitfunction();">
             <div class="row1 row-space">
                 <div class="col-md-6">
                     <div class="input-group text-center">
@@ -98,15 +98,15 @@
                 <div class="col-md-6">
                     <div class="input-group text-center">
                         <label class="label1">Books</label>
-                        <input class="input1--style-7" type="text" name="name" placeholder="Title of Books" id="titlebook" required>
+                        <input class="input1--style-7" type="text" name="book" placeholder="Title of Books" id="titlebook" required>
                     </div>
                 </div>
             </div><br>
             <div class="row1 row-space">
               <div class="col-md-6">
                   <div class="input-group text-center">
-                      <label class="label1">Description</label>
-                      <textarea class="input1--style-7" type="text" name="description" placeholder="Description of Author" id="description" required></textarea>
+                      <label class="label1">Details</label>
+                      <textarea class="input1--style-7" type="text" name="details" placeholder="Details of Author" id="details" required></textarea>
                   </div>
               </div>
               <div class="col-md-6">
@@ -118,7 +118,7 @@
               </div>
           </div>
             <div class="col-md-12 p-t-15 text-center">
-                <button class="btn btn--radius-2 btn-success btn-lg" type="submit">Submit</button>
+                <button class="btn btn--radius-2 btn-success btn-lg" type="submit">Add</button>
             </div>
         </form>
           <!--/stories-->
@@ -177,6 +177,24 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Add Author Confirmation -->
+    <script>
+    function onsubmitfunction(event, error)
+    {
+      if(!error)
+      {
+          alert("Are sure want to add this Author Details?");
+          console.log("Success");
+          return true;
+      }
+      else
+      {
+          event.preventDefault();
+          console.log("Failed");
+          return false;
+      }
+    }
+    </script>
 	</body>
 </html>
