@@ -1,30 +1,37 @@
 const express = require("express");
 const usersRouter = express.Router();
+const Userdata = require('../model/Userdata');
+const bcrypt = require("bcryptjs");
 usersRouter.use(express.json());
 usersRouter.use(express.urlencoded({ extended : true}));
-function router(nav)
+function router()
 {
     usersRouter.get('/signup',(req,res, next)=>{
         res.render('signup',{
             title:'Library'
         });
     });
-    usersRouter.post('/signup',(req,res)=>{
-        var body = req.body;
-        if(body.password === body.password2)
+    // Storing Sign-Up data of user to Database
+    usersRouter.post('/signup',(req,res, next)=>{
+        // Storing Password of user in Encrypted format
+        bcrypt.hash(req.body.password, 10, function(err, hash)
         {
-            res.render('login',{
-                title:'Library'
-            });
-        }
-        else
+        var item = new Userdata ({
+             Name:req.body.Name,
+             username:req.body.username,
+             email:req.body.email,
+             phone:req.body.phone,
+             password: hash,
+             password2: req.body.password
+        })
+        var user = Userdata(item);
+        user.save()
+        res.render('login',
         {
-            res.redirect('signup');
-        }
+            title:'Library'
+        });
     });
-
+});
     return usersRouter;
 }
 module.exports = router;
-
-

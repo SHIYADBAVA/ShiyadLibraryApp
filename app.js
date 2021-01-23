@@ -1,6 +1,10 @@
 const express = require("express");
+const Userdata = require("./src/model/Userdata");
 const app = new express();
 const port = process.env.PORT || 5000;
+// const Userdata = require('../model/Userdata');
+// const bcrypt = require("bcryptjs");
+// const jwt = require("jsonwebtoken");
 app.use(express.json());
 app.use(express.urlencoded({ extended : true}));
 const nav = [
@@ -35,24 +39,29 @@ app.get('/',(req,res, next)=>{
         title:'Library'
     });
 });
-const emailuser="admin@test.com";
-const passworduser="12345";
-app.post("/login",(req,res, next)=>{
-    const body = req.body;
-    if(body.email === emailuser && body.password === passworduser)
-    {
-        res.render('index',{
-            nav,
-            title:"Library",
-        });
-    }
-    else
-    {
-        
-        res.redirect('/');
-    }
-})
 
+
+app.post("/login",(req,res, next)=>{
+    var username = req.body.username;
+    var password = req.body.password;
+
+    Userdata.findOne({username: username, password2: password}, (err, user)=>{
+        if(!user)
+        {
+            console.log("Invalid input");
+            return res.redirect('/')
+        }
+        else
+        {
+            res.render('index',{
+                nav,
+                title:"Library",
+            });
+            return res.status(200).send()
+        }
+        
+    })
+});
 
 
 

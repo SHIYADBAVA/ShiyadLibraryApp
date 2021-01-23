@@ -4,7 +4,7 @@ var objectId=require('mongodb').ObjectID
 
 
 // Database Connection
-mongoose.connect("mongodb://localhost:27017/librarydb");
+mongoose.connect("mongodb+srv://userone:userone@cluster0.62jod.mongodb.net/LibraryApp?retryWrites=true&w=majority");
 
 // Schema Definition
 const Schema = mongoose.Schema;
